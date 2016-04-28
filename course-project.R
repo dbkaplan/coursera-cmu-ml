@@ -4,18 +4,18 @@ library(caret)
 set.seed(123)
 
 #import testing and training datasets
-training = read.csv("pml-training.csv")
-testing = read.csv("pml-testing.csv")
+training <- read.csv("pml-training.csv")
+testing <- read.csv("pml-testing.csv")
 
 #create a smaller data set -- to save time -- that uses overy other record
-training_a = training[1:nrow(training) %% 2 == 0,]
+training_a <- training[1:nrow(training) %% 2 == 0,]
 
 #set up control to use 10 k-fold cross validation
 train_control <- trainControl(method="cv", number=10)
 
 #train a model using all predictors that do not have sparse data.
 #The model will be built using random forest
-modFit = train(classe ~ roll_belt + pitch_belt + yaw_belt + total_accel_belt +
+modFit <- train(classe ~ roll_belt + pitch_belt + yaw_belt + total_accel_belt +
                  gyros_belt_x + gyros_belt_y + gyros_belt_z + accel_belt_x +
                  accel_belt_y + accel_belt_z + magnet_belt_x + magnet_belt_y +
                  magnet_belt_z + roll_arm + pitch_arm + yaw_arm + total_accel_arm +
@@ -39,8 +39,8 @@ confusionMatrix(modFit)
 varImpPlot(modFit$finalModel)
 
 #print the most important variables ordered descending
-imp = varImp(modFit$finalModel)
+imp <- varImp(modFit$finalModel)
 print(imp[with(imp,order(-Overall)),,drop=FALSE])
 
 #Predict the testing set
-testPred = predict(modFit, testing)
+testPred <- predict(modFit, testing)
