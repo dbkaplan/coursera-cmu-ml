@@ -1,11 +1,15 @@
 # Coursera CMU Course project
 ### David Kaplan
 
+[Link to code](https://github.com/dbkaplan/coursera-cmu-ml/blob/master/course-project.R)
+
 I started by reducing the predictors to the 52 columns that consistently had data, in order to make processing easier. Since there were still many predictors, I used a random forest so that the best predictors would be automatically selected and weighted. I also used 10 k-fold cross validation in order to refine the model and balance bias and variance.
 
 When I started training, I used only a tenth of the available training data so that I could get a quick result and see whether I was on the right track. The initial accuracy of the model was 72%. Using the varImp function, I could see that the model was starting to find which predictors were better than others – the top being roll_belt, pitch_forearm, and yaw_belt.
 
 After this initial result, I started to ramp up the number of rows used in training the model. The processing took much longer, but the accuracy improved as the number of records increased. In the end, I used ½ of the records from the training set and achieved **98.4%** accuracy with an out of sample error rate of **1.37%**.
+
+In the end, I was able to successfully predict every test case.
 
 I ran some final analyses in order to understand the model and indicators better:
 The confusion matrix and individual class errors were:
