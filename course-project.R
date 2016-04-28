@@ -4,8 +4,8 @@ library(caret)
 set.seed(123)
 
 #import testing and training datasets
-training = read.csv("C:/Users/Dave/Documents/RProjects/pml-training.csv")
-testing = read.csv("C:/Users/Dave/Documents/RProjects/pml-testing.csv")
+training = read.csv("pml-training.csv")
+testing = read.csv("pml-testing.csv")
 
 #create a smaller data set -- to save time -- that uses overy other record
 training_a = training[1:nrow(training) %% 2 == 0,]
